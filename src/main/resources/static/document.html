@@ -1,0 +1,102 @@
+<div class="generic-container">
+    <div class="panel panel-default" ng-hide="!ctrl.patientId">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">Agregar Documento</span></div>
+        <div class="panel-body">
+            <div class="formcontainer">
+                <div class="alert alert-success" role="alert" ng-if="ctrl.successMessage">{{ctrl.successMessage}}</div>
+                <div class="alert alert-danger" role="alert" ng-if="ctrl.errorMessage">{{ctrl.errorMessage}}</div>
+                <form ng-submit="ctrl.submit()" name="myForm" class="form-horizontal">
+                    <input type="hidden" ng-model="ctrl.document.idDocumentSummary" />
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="name">Fecha del Documento</label>
+                            <div class="col-md-7">
+                                <input type="date" ng-model="ctrl.document.documentDate" id="documentDate" class="username form-control input-sm" placeholder="Ingresar Fecha del Documento" required/>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="rut">Descripcion</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.document.description" id="description" class="form-control input-sm" placeholder="Ingresar Descripcion del Documento" required/>
+                            </div>
+                        </div>
+                    </div>
+     
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="age">Codigo</label>
+                            <div class="col-md-7">
+                                <input type="text" ng-model="ctrl.document.code" id="code" class="form-control input-sm" placeholder="Ingresar Codigo del Documento" required/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="sex">Identificacion EhCOS</label>
+                            <div class="col-md-7">
+                                <input type="number" ng-model="ctrl.document.ehCOSIdentificationId" id="ehCOSIdentificationId" class="form-control input-sm" placeholder="Ingresar Identificador de EhCOS" required ng-pattern="ctrl.onlyIntegers"/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-2 control-lable" for="sex">Seleccione un archivo</label>
+                            <div class="col-md-7">
+                            	<input type="file" ng-model='ctrl.document.file' hidden base-sixty-four-input>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+ 
+                    <div class="row">
+                        <div class="form-actions floatRight">
+                            <input type="submit"  value="{{!ctrl.document.idDocumentSummary ? 'Agregar' : 'Actualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                            <button type="button" ng-click="ctrl.reset()" class="btn btn-warning btn-sm">Limpiar Formulario</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">Lista de Documentos</span></div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+	                    <tr>
+	                    	<th>ID</th>
+	                        <th>Fecha del Documento</th>
+	                        <th>Descripcion</th>
+	                        <th>Codigo</th>
+	                        <th>Identificacion EhCOS</th>
+	                        <th width="100"></th>
+	                        <th ng-hide="!ctrl.patientId" width="100"></th>
+	                        <th ng-hide="!ctrl.patientId" width="100"></th>
+	                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="document in ctrl.getAllDocuments()">
+                    	<td>{{document.idDocumentSummary}}</td>
+                        <td>{{document.documentDate | date:'dd/MM/yyyy'}}</td>
+                        <td>{{document.description}}</td>
+                        <td>{{document.code}}</td>
+                        <td>{{document.ehCOSIdentificationId}}</td>
+                        <td><button type="button" ng-click="ctrl.viewDocument(document.idDocumentSummary)" class="btn btn-info">Visualizar Documento</button></td>
+                        <td ng-hide="!ctrl.patientId"><button type="button" ng-click="ctrl.editDocument(document.idDocumentSummary)" class="btn btn-success custom-width">Editar</button></td>
+                        <td ng-hide="!ctrl.patientId"><button type="button" ng-click="ctrl.removeDocument(document.idDocumentSummary)" class="btn btn-danger custom-width">Eliminar</button></td>
+                    </tr>
+                    </tbody>
+                </table>      
+            </div>
+        </div>
+    </div>
+</div>
