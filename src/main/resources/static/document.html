@@ -12,7 +12,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="name">Fecha del Documento</label>
                             <div class="col-md-7">
-                                <input type="date" ng-model="ctrl.document.documentDate" id="documentDate" class="username form-control input-sm" placeholder="Ingresar Fecha del Documento" required/>
+                                <input type="date" ng-model="ctrl.document.documentDate" value="{{ctrl.document.documentDate | date:'yyyy-MM-dd'}}" id="documentDate" class="form-control input-sm" placeholder="Ingresar Fecha del Documento" required/>
                             </div>
                         </div>
                     </div>
