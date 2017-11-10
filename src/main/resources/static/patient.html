@@ -30,7 +30,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="age">Edad</label>
                             <div class="col-md-7">
-                                <input type="number" ng-model="ctrl.patient.age" id="age" class="form-control input-sm" placeholder="Ingresar Edad del Paciente"  min="0" max="150" required/>
+                                <input type="number" ng-model="ctrl.patient.age" id="age" class="form-control input-sm" placeholder="Ingresar Edad del Paciente" required/>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="birthDate">Fecha Nacimiento</label>
                             <div class="col-md-7">
-                                <input type="date" ng-model="ctrl.patient.birthDate" id="birthDate" class="form-control input-sm" placeholder="Ingresar Fecha de Nacimiento del Paciente" required/>
+                                <input type="date" ng-model="ctrl.patient.birthDate" id="birthDate"  value="{{ctrl.patient.birthDate | date:'yyyy-MM-dd'}}" class="form-control input-sm" placeholder="Ingresar Fecha de Nacimiento del Paciente" required/>
                             </div>
                         </div>
                     </div>

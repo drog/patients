@@ -90,6 +90,7 @@ angular.module('crudApp').controller('PatientController',
             self.errorMessage='';
             PatientService.getPatient(idPatient).then(
                 function (patient) {
+                	patient.age = parseInt(patient.age);
                     self.patient = patient;
                 },
                 function (errResponse) {

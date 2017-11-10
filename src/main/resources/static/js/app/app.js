@@ -2,17 +2,17 @@
 var app = angular.module('crudApp',['ui.router','ngStorage', 'naif.base64']);
  
 app.constant('urls', {
-	BASE: 'http://localhost:7777/patient/',
-	GETALL: 'http://localhost:7777/patient/patients',
-    CREATE: 'http://localhost:7777/patient/create',
-    UPDATE: 'http://localhost:7777/patient/update/',
-    DELETE: 'http://localhost:7777/patient/delete/',
+	BASE: 'http://7.214.104.187:7777/patient/',
+	GETALL: 'http://7.214.104.187:7777/patient/patients',
+    CREATE: 'http://7.214.104.187:7777/patient/create',
+    UPDATE: 'http://7.214.104.187:7777/patient/update/',
+    DELETE: 'http://7.214.104.187:7777/patient/delete/',
     
-    BASE_DOCUMENT: 'http://localhost:7777/document/',
-    GETALL_DOCUMENTS: 'http://localhost:7777/document/documents/',
-    CREATE_DOCUMENT: 'http://localhost:7777/document/create/',
-    UPDATE_DOCUMENT: 'http://localhost:7777/document/update/',
-    DELETE_DOCUMENT: 'http://localhost:7777/document/delete/'
+    BASE_DOCUMENT: 'http://7.214.104.187:7777/document/',
+    GETALL_DOCUMENTS: 'http://7.214.104.187:7777/document/documents/',
+    CREATE_DOCUMENT: 'http://7.214.104.187:7777/document/create/',
+    UPDATE_DOCUMENT: 'http://7.214.104.187:7777/document/update/',
+    DELETE_DOCUMENT: 'http://7.214.104.187:7777/document/delete/'
     
 });
  
