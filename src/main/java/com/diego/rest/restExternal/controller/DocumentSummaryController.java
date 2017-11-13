@@ -2,7 +2,6 @@ package com.diego.rest.restExternal.controller;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,16 +58,17 @@ public class DocumentSummaryController {
 	}
 	
 	
-	@RequestMapping(value = {"/documents/", "/documents/{idPatient}"}, method = RequestMethod.GET)
-	public List<DocumentSummary>  findAll(@PathVariable Optional<Long> idPatient) {
+	@RequestMapping(value = "/documents/", method = RequestMethod.GET)
+	public List<DocumentSummary>  findAll() {
+		logger.info("/documents/");
+		return documentSummaryService.findAll();
+	}
+	
+	@RequestMapping(value = "/documents/{idPatient}", method = RequestMethod.GET)
+	public List<DocumentSummary>  findAll(@PathVariable Long idPatient) {
+		logger.info("/documents/"+ idPatient);
+		return documentSummaryService.findByIdPatient(idPatient);
 		
-		if( idPatient.isPresent() ){
-			logger.info("/documents/"+ idPatient);
-			return documentSummaryService.findByIdPatient(idPatient.get());
-		}else{
-			logger.info("/documents/");
-			return documentSummaryService.findAll();
-		}
 	}
 	
 	@RequestMapping(value = "/create/{idPatient}", method = RequestMethod.POST)

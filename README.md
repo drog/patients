@@ -23,7 +23,7 @@ This project was built based in the next tutorial http://websystique.com/spring-
 ![documents](https://i.imgur.com/Hw6cY6q.png)
 
 ## Requeriments
-- Java 1.8
+- Java 1.6
 
 ## Execute Application
 1. Download zip or clone from github `git clone https://github.com/drog/patients.git`
