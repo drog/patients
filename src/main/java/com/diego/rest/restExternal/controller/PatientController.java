@@ -32,7 +32,7 @@ public class PatientController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Patient findById(@PathVariable String id) {
-		logger.info("/"+id);
+		logger.debug("/patient/"+id);
 		Long idLong =  NumberUtils.parseNumber(id, Long.class); 
 		
 		return patientService.findById(idLong);
@@ -41,7 +41,7 @@ public class PatientController {
 	
 	@RequestMapping(value = "/findByNip", params= {"nip", "ticket", "sessionId"}, method = RequestMethod.GET)
 	public RestResponseDTO findByNip(@RequestParam String nip) {
-		logger.info("/findByNip/"+nip);
+		logger.debug("/patient/findByNip/"+nip);
 		
 		
 		return new RestResponseDTO(patientService.findByNip(nip));
@@ -49,7 +49,7 @@ public class PatientController {
 	
 	@RequestMapping(value = "/patients", method = RequestMethod.GET)
 	public List<Patient>  findAll() {
-		logger.info("/patients");
+		logger.debug("/patient/patients");
 		return patientService.findAll();
 	}
 	
@@ -68,8 +68,8 @@ public class PatientController {
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Patient> updateUser(@PathVariable("id") long id, @RequestBody Patient patient) {
-        logger.info("Updating User with id {}", id);
+    public ResponseEntity<Patient> updateUser(@PathVariable("id") Long id, @RequestBody Patient patient) {
+        logger.debug("Updating User with id {}", id);
  
         Patient currenPatient = patientService.findById(id);
  
@@ -90,8 +90,8 @@ public class PatientController {
 	
 	
 	
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Patient> deletePatient(@PathVariable("idPatient") long id) {
+	@RequestMapping(value = "/delete/{idPatient}", method = RequestMethod.DELETE)
+    public ResponseEntity<Patient> deletePatient(@PathVariable("idPatient") Long id) {
  
         Patient patient = patientService.findById(id);
         if (patient == null) {
@@ -104,7 +104,7 @@ public class PatientController {
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<Patient> deleteAllPatients() {
-        logger.info("Deleting All Users");
+        logger.debug("Deleting All Users");
  
         patientService.deleteAllPatients();
         return new ResponseEntity<Patient>(HttpStatus.NO_CONTENT);

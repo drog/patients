@@ -55,7 +55,6 @@ angular.module('crudApp').factory('DocumentService',
             }
             
             function createDocument(idPatient, document) {
-            	document.documentDate = new Date(document.documentDate).getTime();
             	document.file.fileType = document.file.filetype;
             	document.file.fileSize = document.file.filesize;
             	document.file.fileName = document.file.filename;
@@ -78,7 +77,6 @@ angular.module('crudApp').factory('DocumentService',
             }
             
             function updateDocument(document, idDocument, idPatient) {
-            	document.documentDate = new Date(document.documentDate).getTime();
                 console.log('Actualizando Documento : '+idDocument);
                 var deferred = $q.defer();
                 $http.put(urls.UPDATE_DOCUMENT + idDocument, document)

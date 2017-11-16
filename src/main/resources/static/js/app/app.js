@@ -1,28 +1,38 @@
 
-var app = angular.module('crudApp',['ui.router','ngStorage', 'naif.base64']);
+var app = angular.module('crudApp',['ui.router','ngStorage', 'ui.bootstrap.datetimepicker', 'naif.base64']);
  
-app.constant('urls', {
-	BASE: 'http://7.214.104.187:7777/patient/',
-	GETALL: 'http://7.214.104.187:7777/patient/patients',
-    CREATE: 'http://7.214.104.187:7777/patient/create',
-    UPDATE: 'http://7.214.104.187:7777/patient/update/',
-    DELETE: 'http://7.214.104.187:7777/patient/delete/',
+app.constant('urls', (function() {
+//	URL_BASE = 'http://127.0.0.1:7777'
+	URL_BASE = 'http://181.118.174.70:8080/restExternal-0.0.1-SNAPSHOT';
+	
+	return {
+		DIRECTORY_BASE: '/restExternal-0.0.1-SNAPSHOT/',
+//		DIRECTORY_BASE: '/',
+		BASE: URL_BASE + '/patient/',
+		GETALL: URL_BASE + '/patient/patients',
+	    CREATE: URL_BASE + '/patient/create',
+	    UPDATE: URL_BASE + '/patient/update/',
+	    DELETE: URL_BASE + '/patient/delete/',
+	    
+	    BASE_DOCUMENT: URL_BASE + '/document/',
+	    GETALL_DOCUMENTS: URL_BASE + '/document/documents/',
+	    CREATE_DOCUMENT: URL_BASE + '/document/create/',
+	    UPDATE_DOCUMENT: URL_BASE + '/document/update/',
+	    DELETE_DOCUMENT: URL_BASE + '/document/delete/'
+	}
+	
     
-    BASE_DOCUMENT: 'http://7.214.104.187:7777/document/',
-    GETALL_DOCUMENTS: 'http://7.214.104.187:7777/document/documents/',
-    CREATE_DOCUMENT: 'http://7.214.104.187:7777/document/create/',
-    UPDATE_DOCUMENT: 'http://7.214.104.187:7777/document/update/',
-    DELETE_DOCUMENT: 'http://7.214.104.187:7777/document/delete/'
-    
-});
+})());
  
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
- 
+app.config(['$stateProvider', '$urlRouterProvider', 'urls',
+    function($stateProvider, $urlRouterProvider, urls) {
+	
+		moment.locale('es');
+	
         $stateProvider
             .state('patient', {
                 url: '/patient',
-                templateUrl: '/patient.html',
+                templateUrl: urls.DIRECTORY_BASE + 'patient.html',
                 controller:'PatientController',
                 controllerAs:'ctrl',
                 resolve: {
@@ -35,7 +45,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 }
             }).state('document', {
                 url: '/document/:patientId',
-                templateUrl: '/document.html',
+                templateUrl: urls.DIRECTORY_BASE + 'document.html',
                 controller:'DocumentController',
                 controllerAs:'ctrl',
                 resolve: {

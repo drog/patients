@@ -103,6 +103,7 @@ angular.module('crudApp').controller('DocumentController',
             self.successMessage='';
             self.errorMessage='';
             self.document={};
+            angular.element("input[type='file']").val(null);
             $scope.myForm.$setPristine(); //reset Form
         }
 

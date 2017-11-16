@@ -12,7 +12,19 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="name">Fecha del Documento</label>
                             <div class="col-md-7">
-                                <input type="date" ng-model="ctrl.document.documentDate" value="{{ctrl.document.documentDate | date:'yyyy-MM-dd'}}" id="documentDate" class="form-control input-sm" placeholder="Ingresar Fecha del Documento" required/>
+                            	<div class="dropdown dropdown-document">
+								    <a class="dropdown-toggle" id="dropdown-document" role="button" data-toggle="dropdown" data-target=".dropdown-document">
+								      <div class="input-group">
+								        <input type="text" id="date" name="date" class="form-control" value="{{ ctrl.document.documentDate | date:'dd-MM-yyyy' }}" 
+								        	placeholder="Ingresar Fecha del Documento" required>
+								        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								      </div>
+								    </a>
+								    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								      <datetimepicker   data-ng-model="ctrl.document.documentDate" 
+								                        data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle', minView: 'day', modelType : 'milliseconds' }"></datetimepicker>
+								    </ul>
+								 </div>
                             </div>
                         </div>
                     </div>

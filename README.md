@@ -14,8 +14,9 @@ This project was built based in the next tutorial http://websystique.com/spring-
 - [Angularjs v1.5.8](https://github.com/angular/angular.js)
 - [Angular-ui router 0.3.1](https://github.com/angular-ui/ui-router)
 - [ngstorage 0.3.10](https://github.com/gsklee/ngStorage)
+- [angular-bootstrap-datetimepicker](https://github.com/dalelotts/angular-bootstrap-datetimepicker)
 - [angular-base64-upload](https://github.com/adonespitogo/angular-base64-upload)
-- [Bootstrap 3.3.2](https://github.com/twbs/bootstrap)
+- [Bootstrap 3.3.7](https://github.com/twbs/bootstrap)
 
 
 #### Some Screenshots
@@ -55,6 +56,9 @@ spring.jpa.show-sql=false
 spring.jpa.hibernate.naming-strategy=org.hibernate.cfg.EJB3NamingStrategy
 
 management.security.enabled=true
+
+logging.level.org.springframework.web=DEBUG
+logging.level.org.hibernate=ERROR
 ```
 
 #### Documentation generated with Swagger
@@ -71,3 +75,4 @@ You can acces to http://localhost:7777/swagger-ui.html and see the documentation
 - http://javasampleapproach.com/java-integration/integrate-angular-4-springboot-web-app-springtoolsuite		
 - http://www.baeldung.com/spring-boot-application-configuration
 - http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+- https://www.mkyong.com/spring-boot/spring-boot-deploy-war-file-to-tomcat/

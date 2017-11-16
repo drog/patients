@@ -55,7 +55,6 @@ angular.module('crudApp').factory('PatientService',
             }
 
             function createPatient(patient) {
-            	patient.birthDate = new Date(patient.birthDate).getTime();
                 console.log('Creando paciente '+ patient);
                 var deferred = $q.defer();
                 $http.post( urls.CREATE, patient)
@@ -73,7 +72,6 @@ angular.module('crudApp').factory('PatientService',
             }
             
             function updatePatient(patient, idPatient) {
-            	patient.birthDate = new Date(patient.birthDate).getTime();
                 console.log('Actualizando Paciente : '+idPatient);
                 var deferred = $q.defer();
                 $http.put(urls.UPDATE + idPatient, patient)

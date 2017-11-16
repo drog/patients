@@ -1,10 +1,10 @@
 package com.diego.rest.restExternal.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,7 +28,7 @@ public class Patient {
 	
 	private String sex;
 	
-	@OneToOne(mappedBy="patient")
+	@OneToOne(mappedBy="patient", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private SummarizedClinicalHistory summarizedClinicalHistory;
 

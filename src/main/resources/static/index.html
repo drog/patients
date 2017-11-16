@@ -7,8 +7,9 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     
         <title>Lista de Pacientes</title>
-        <link href="css/bootstrap.css" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/app.css" rel="stylesheet"/>
+        <link href="css/datetimepicker.css" rel="stylesheet"/>
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,10 +33,17 @@
 				</nav>
 		 		
 		        <div ui-view></div>
-		        <script src="js/lib/angular.min.js" ></script>
+		        
+		        <script src="js/lib/jquery-3.2.1.min.js"></script>
+		        <script src="js/lib/bootstrap.min.js"></script>
+		        <script src="js/lib/moment.min.js"></script>
+		        <script src="js/lib/moment-es.js"></script>
+		        <script src="js/lib/angular.min.js"></script>
+		        <script src="js/lib/angular-base64-upload.min.js"></script>	
 		        <script src="js/lib/angular-ui-router.min.js" ></script>
 		        <script src="js/lib/ngStorage.min.js"></script>
-		        <script src="js/lib/angular-base64-upload.min.js"></script>
+		        <script src="js/lib/datetimepicker.js"></script>
+				<script src="js/lib/datetimepicker.templates.js"></script>
 		        <script src="js/app/app.js"></script>
 		        <script src="js/app/PatientService.js"></script>
 		        <script src="js/app/DocumentService.js"></script>

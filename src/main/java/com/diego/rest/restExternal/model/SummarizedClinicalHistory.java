@@ -2,6 +2,7 @@ package com.diego.rest.restExternal.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class SummarizedClinicalHistory {
 	@JsonIgnore
 	private Patient patient;
 	
-	@OneToMany(mappedBy="summarizedClinicalHistory", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="summarizedClinicalHistory", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<DocumentSummary> documents;
 
 	public final Long getIdSummarizedClinicalHistory() {

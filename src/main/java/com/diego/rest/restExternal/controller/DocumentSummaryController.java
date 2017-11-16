@@ -41,14 +41,14 @@ public class DocumentSummaryController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public DocumentSummary findById(@PathVariable Long id) {
-		logger.info("/"+id);
+		logger.debug("/document/"+id);
 		return documentSummaryService.findById(id);
 	}
 	
 	
 	@RequestMapping(value = "/{id}/downloadPdf", method = RequestMethod.GET)
 	public RestResponseDTO downloadPdf(@PathVariable Long id) {
-		logger.info("/"+id);
+		logger.debug("/document/"+id+"/downloadPdf");
 		DocumentSummary documentSummary =  documentSummaryService.findByEhCOSIdentificationId(id);
 		if( documentSummary != null && documentSummary.getFile() != null ){
 			return new RestResponseDTO(documentSummary.getFile().getBase64());
@@ -60,13 +60,13 @@ public class DocumentSummaryController {
 	
 	@RequestMapping(value = "/documents/", method = RequestMethod.GET)
 	public List<DocumentSummary>  findAll() {
-		logger.info("/documents/");
+		logger.debug("/document/documents/");
 		return documentSummaryService.findAll();
 	}
 	
 	@RequestMapping(value = "/documents/{idPatient}", method = RequestMethod.GET)
 	public List<DocumentSummary>  findAll(@PathVariable Long idPatient) {
-		logger.info("/documents/"+ idPatient);
+		logger.debug("/document/documents/"+ idPatient);
 		return documentSummaryService.findByIdPatient(idPatient);
 		
 	}
@@ -100,7 +100,7 @@ public class DocumentSummaryController {
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     public ResponseEntity<DocumentSummary> updateDocument(@PathVariable("id") long id, @RequestBody DocumentSummary documentSummary) {
-        logger.info("Updating DocumentSummary with id {}", id);
+        logger.debug("Updating DocumentSummary with id {}", id);
  
         DocumentSummary currentDocumentSummary = documentSummaryService.findById(id);
  
@@ -132,7 +132,7 @@ public class DocumentSummaryController {
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<DocumentSummary> deleteAllDocuments() {
-        logger.info("Deleting All Users");
+        logger.debug("Deleting All Users");
  
         documentSummaryService.deleteAllDocuments();
         return new ResponseEntity<DocumentSummary>(HttpStatus.NO_CONTENT);

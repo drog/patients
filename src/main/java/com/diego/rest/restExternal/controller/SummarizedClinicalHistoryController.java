@@ -1,9 +1,9 @@
 package com.diego.rest.restExternal.controller;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,10 +25,10 @@ public class SummarizedClinicalHistoryController {
 	
 	@RequestMapping(value = "/{id}/summarizedClinicalHistory", method = RequestMethod.GET)
 	public RestResponseDTO findByIdPatient(@PathVariable Long id) {
-		logger.info("/"+id);
+		logger.debug("/history/"+id+"/summarizedClinicalHistory");
 		
 		SummarizedClinicalHistory summarizedClinicalHistory = summarizedClinicalHistoryService.findByIdPatient(id);
-		if( summarizedClinicalHistory != null && CollectionUtils.isNotEmpty(summarizedClinicalHistory.getDocuments()) ){
+		if( summarizedClinicalHistory != null && !CollectionUtils.isEmpty(summarizedClinicalHistory.getDocuments()) ){
 			for (DocumentSummary documentSummary : summarizedClinicalHistory.getDocuments()) {
 				documentSummary.setIdDocumentSummary(null);
 				documentSummary.setFile(null);

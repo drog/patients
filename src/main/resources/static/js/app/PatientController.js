@@ -77,9 +77,13 @@ angular.module('crudApp').controller('PatientController',
         	PatientService.removePatient(idPatient)
                 .then(
                     function(){
+                    	self.successMessage = 'Paciente eliminado correctamente';
+                        self.errorMessage='';
                         console.log('Paciente '+idPatient + ' eliminado correctamente');
                     },
                     function(errResponse){
+                    	self.errorMessage = 'Hubo un error al eliminar el paciente';
+                        self.successMessage='';	
                         console.error('Hubo un error al eliminar el paciente '+idPatient +', Error :'+errResponse.data);
                     }
                 );

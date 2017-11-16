@@ -12,7 +12,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="name">Nombre</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.patient.name" id="name" class="username form-control input-sm" placeholder="Ingresar Nombre del paciente" required ng-minlength="3"/>
+                                <input type="text" ng-model="ctrl.patient.name" id="name" class="form-control input-sm" placeholder="Ingresar Nombre del paciente" required ng-minlength="3"/>
                             </div>
                         </div>
                     </div>
@@ -21,7 +21,7 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="rut">Rut</label>
                             <div class="col-md-7">
-                                <input type="text" ng-model="ctrl.patient.nip" id="nip" class="form-control input-sm" placeholder="Ingresar Rut del Paciente" required ng-pattern="ctrl.onlyIntegers"/>
+                                <input type="text" ng-model="ctrl.patient.nip" id="nip" class="form-control input-sm" placeholder="Ingresar Rut del Paciente" required/>
                             </div>
                         </div>
                     </div>
@@ -53,11 +53,23 @@
                         <div class="form-group col-md-12">
                             <label class="col-md-2 control-lable" for="birthDate">Fecha Nacimiento</label>
                             <div class="col-md-7">
-                                <input type="date" ng-model="ctrl.patient.birthDate" id="birthDate"  value="{{ctrl.patient.birthDate | date:'yyyy-MM-dd'}}" class="form-control input-sm" placeholder="Ingresar Fecha de Nacimiento del Paciente" required/>
+                            	<div class="dropdown dropdown-patient">
+								    <a class="dropdown-toggle" id="dropdown-patient" role="button" data-toggle="dropdown" data-target=".dropdown-patient">
+								      <div class="input-group">
+								        <input type="text" id="date" name="date" class="form-control" value="{{ ctrl.patient.birthDate | date:'dd-MM-yyyy' }}" 
+								        	placeholder="Ingresar Fecha de Nacimiento del Paciente" required>
+								        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								      </div>
+								    </a>
+								    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+								      <datetimepicker   data-ng-model="ctrl.patient.birthDate" 
+								                        data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle', minView: 'day', modelType : 'milliseconds' }"></datetimepicker>
+								    </ul>
+								 </div>
                             </div>
                         </div>
                     </div>
- 
+ 	
                     <div class="row">
                         <div class="form-actions floatRight">
                             <input type="submit"  value="{{!ctrl.patient.idPatient ? 'Agregar' : 'Actualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
