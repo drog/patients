@@ -2,12 +2,10 @@
 var app = angular.module('crudApp',['ui.router','ngStorage', 'ui.bootstrap.datetimepicker', 'naif.base64']);
  
 app.constant('urls', (function() {
-//	URL_BASE = 'http://127.0.0.1:7777'
-	URL_BASE = 'http://181.118.174.70:8080/restExternal-0.0.1-SNAPSHOT';
+	URL_BASE = 'http://127.0.0.1:7777'
 	
 	return {
-		DIRECTORY_BASE: '/restExternal-0.0.1-SNAPSHOT/',
-//		DIRECTORY_BASE: '/',
+		DIRECTORY_BASE: '/',
 		BASE: URL_BASE + '/patient/',
 		GETALL: URL_BASE + '/patient/patients',
 	    CREATE: URL_BASE + '/patient/create',
