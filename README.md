@@ -60,7 +60,7 @@ management.security.enabled=true
 logging.level.org.springframework.web=DEBUG
 logging.level.org.hibernate=ERROR
 ```
-##Configuration AngularJs
+## Configuration AngularJs
 
 Modify `src/main/resources/static/js/app/app.js` line 5 `URL_BASE = 'http://127.0.0.1:7777'` for the ip of the server
 
